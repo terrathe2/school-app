@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Teacher</title>
+  </head>
+  <body>
+    <form action="/teacher/edit/<%= dataTeacher.id%>" method="post">
+      <label>First Name</label><br>
+      <input type="text" name="firstName" value="<%= dataTeacher.firstName%>" required><br>
+      <label>Last Name</label><br>
+      <input type="text" name="lastName" value="<%= dataTeacher.lastName%>" required><br>
+      <label>Email</label><br>
+      <input type="text" name="email" value="<%= dataTeacher.email%>" required><br>
+      <select name="idSubject">
+        <% dataSubject.forEach((rowSubject) => {%>
+          <option value="<%= rowSubject.id %>" <%= (rowSubject.id === dataTeacher.idSubject) ? "selected" : "" %> ><%= rowSubject.subjectName%></option>
+        <%})%>
+      </select><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Subject</title>
+  </head>
+  <body>
+    <form action="/student/addsubject/<%= dataStudent.id%>" method="post">
+      <label>First Name</label><br>
+      <input type="text" name="firstName" value="<%= dataStudent.firstName%>" readonly><br>
+      <label>Last Name</label><br>
+      <input type="text" name="lastName" value="<%= dataStudent.lastName%>" readonly><br>
+      <label>Email</label><br>
+      <input type="email" name="email" value="<%= dataStudent.email%>" readonly><br>
+      <select name="idSubject">
+        <% dataSubject.forEach((rowSubject) => {%>
+        <option value="<%= rowSubject.id%>"><%= rowSubject.subjectName%></option>
+        <%})%>
+      </select><br>
+      <input type="submit" value="Submit" onclick="return confirm('Are You Sure?')">
+    </form>
+  </body>
+</html>

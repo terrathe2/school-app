@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Student</title>
+  </head>
+  <body>
+    <a href="/">BACK</a>
+    <table align="center" border="1">
+      <thead>
+        <tr>
+          <td>No</td>
+          <td>ID</td>
+          <td>Full Name</td>
+          <td>Email</td>
+          <td>Subject</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+          <% dataStudent.forEach((row, index) => {%>
+          <tr>
+            <td><%= index+1%>.</td>
+            <td><%= row.id%></td>
+            <td><%= row.getFullName()%></td>
+            <td><%= row.email%></td>
+            <td>
+              <% if (row.Subjects.length === 0) { %>
+                unassigned
+              <%} else {%>
+              <% row.Subjects.forEach((name, index) => { %>
+                <%= index+1%>. <%= name.subjectName%><br/>
+              <% })} %>
+            </td>
+            <td><a href="/student/edit/<%= row.id%>">Edit</a> | <a href="/student/delete/<%= row.id%>" onclick="return confirm('Are You Sure?')">Delete</a> | <a href="/student/addsubject/<%= row.id%>">Add Subject</a></td>
+          </tr>
+          <%})%>
+      </tbody>
+    </table><hr />
+    <% if (error) {%>
+      <%= error %>
+    <%}%>
+    <form action="/student/insert" method="post">
+      <label>First Name</label><br>
+      <input type="text" name="firstName" required><br>
+      <label>Last Name</label><br>
+      <input type="text" name="lastName" required><br>
+      <label>Email</label><br>
+      <input type="email" name="email" required><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

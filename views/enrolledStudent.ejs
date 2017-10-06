@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Enrolled Students</title>
+  </head>
+  <body>
+    <h2><%= dataStudentSubject[0].Subject.subjectName%></h2><br>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>No.</td>
+          <td>Student Name</td>
+          <td>Score</td>
+          <td>Desc</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% dataStudentSubject.forEach((rowStudentSubject, index) => { %>
+        <tr>
+          <td><%= index+1%>.</td>
+          <td><%= rowStudentSubject.Student.getFullName()%></td>
+          <% if (rowStudentSubject.score) {%>
+          <td><%= rowStudentSubject.score%></td>
+          <% } else { %>
+          <td><a href="/subject/givescore/<%= rowStudentSubject.id%>">Give Score</a></td>
+          <% } %>
+          <td><%= rowStudentSubject.grade%></td>
+        </tr>
+        <% })%>
+      </tbody>
+    </table>
+  </body>
+</html>

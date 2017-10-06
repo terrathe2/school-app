@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Subject</title>
+  </head>
+  <body>
+    <a href="/">BACK</a>
+    <table align="center" border="1">
+      <thead>
+        <tr>
+          <td>No</td>
+          <td>ID</td>
+          <td>Subject Name</td>
+          <td>Techers Name</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+          <% dataSubject.forEach((row, index) => {%>
+          <tr>
+            <td><%= index+1%>.</td>
+            <td><%= row.id%></td>
+            <td><%= row.subjectName%></td>
+            <td>
+              <% row.Teachers.forEach((name, index) => { %>
+                <%= index+1%>. <%= name.getFullName()%><br/>
+              <% }) %>
+            </td>
+            <td><a href="/subject/edit/<%= row.id%>">Edit</a> | <a href="/subject/delete/<%= row.id%>" onclick="return confirm('Are You Sure?')">Delete</a> | <a href="/subject/enrolledstudents/<%= row.id%>">Enrolled Students</a></td>
+          </tr>
+          <%})%>
+      </tbody>
+    </table>
+    <p align="center">
+    <% if (error) { %>
+      <%= error%>
+    <% } %>
+    </p>
+    <hr />
+
+    <form action="/subject/insert" method="post">
+      <label>Subject Name</label><br>
+      <input type="text" name="subjectName" required><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
