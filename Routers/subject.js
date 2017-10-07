@@ -5,7 +5,7 @@ const helper = require("../Helper/helper")
 
 // Tampil halaman Subject
 router.get("/subject", (req, res) => {
-  models.Subject.findAll({include: [models.Teacher], limit:10}).then((rowsSubject) => {
+  models.Subject.findAll({include: [models.Teacher]}).then((rowsSubject) => {
     let message = null;
     if (req.query.message) {
       message = req.query.message;
