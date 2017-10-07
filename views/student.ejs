@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Student</title>
+    <%- include partials/title.ejs%>
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
   </head>
   <body>
-    <a href="/">BACK</a>
-    <table align="center" border="1">
-      <thead>
-        <tr>
-          <td>No</td>
-          <td>ID</td>
-          <td>Full Name</td>
-          <td>Email</td>
-          <td>Subject</td>
-          <td>Action</td>
-        </tr>
-      </thead>
-      <tbody>
-          <% dataStudent.forEach((row, index) => {%>
+    <%- include partials/header.ejs%>
+    <content>
+      <p class="error">
+        <% if (error) {%>
+          <%= error %>
+        <%}%>
+      </p><br>
+      <table>
+        <thead>
           <tr>
-            <td><%= index+1%>.</td>
-            <td><%= row.id%></td>
-            <td><%= row.getFullName()%></td>
-            <td><%= row.email%></td>
-            <td>
-              <% if (row.Subjects.length === 0) { %>
-                unassigned
-              <%} else {%>
-              <% row.Subjects.forEach((name, index) => { %>
-                <%= index+1%>. <%= name.subjectName%><br/>
-              <% })} %>
-            </td>
-            <td><a href="/student/edit/<%= row.id%>">Edit</a> | <a href="/student/delete/<%= row.id%>" onclick="return confirm('Are You Sure?')">Delete</a> | <a href="/student/addsubject/<%= row.id%>">Add Subject</a></td>
+            <th>No</th>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Action</th>
           </tr>
+        </thead>
+        <tbody>
+          <% dataStudent.forEach((row, index) => {%>
+            <tr>
+              <td><%= index+1%>.</td>
+              <td><%= row.id%></td>
+              <td><%= row.getFullName()%></td>
+              <td><%= row.email%></td>
+              <td style="text-align:left;">
+                <% if (row.Subjects.length === 0) { %>
+                  unassigned
+                <%} else {%>
+                <% row.Subjects.forEach((name, index) => { %>
+                  <%= index+1%>. <%= name.subjectName%><br/>
+                <% })} %>
+              </td>
+              <td>
+                <a href="/student/addsubject/<%= row.id%>">
+                  <button class="button edit">Assign Subject</button></a> |
+                <a href="/student/edit/<%= row.id%>">
+                  <button class="button edit">Edit</button></a> |
+                <a href="/student/delete/<%= row.id%>" onclick="return confirm('Are You Sure?')">
+                  <button class="button delete">Delete</button></a>
+              </td>
+            </tr>
           <%})%>
-      </tbody>
-    </table><hr />
-    <% if (error) {%>
-      <%= error %>
-    <%}%>
-    <form action="/student/insert" method="post">
-      <label>First Name</label><br>
-      <input type="text" name="firstName" required><br>
-      <label>Last Name</label><br>
-      <input type="text" name="lastName" required><br>
-      <label>Email</label><br>
-      <input type="email" name="email" required><br>
-      <input type="submit" value="Submit">
-    </form>
+        </tbody>
+      </table>
+    </content>
+    <%- include partials/footer.ejs%>
   </body>
 </html>

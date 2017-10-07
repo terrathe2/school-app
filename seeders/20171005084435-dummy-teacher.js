@@ -7,25 +7,25 @@ module.exports = {
         firstName: "Bambang",
         lastName: "Suprapto",
         email: "bambangsuprapto@sekolah.id",
-        idSubject: null
+        idSubject: 1
       },
       {
         firstName: "Rukmana",
         lastName: "Fatmawati",
         email: "rukmanafatmawati@sekolah.id",
-        idSubject: null
+        idSubject: 2
       },
       {
         firstName: "Butet",
         lastName: "Naiborhu",
         email: "butetnaiborhu@sekolah.id",
-        idSubject: null
+        idSubject: 1
       },
       {
         firstName: "Yulius",
         lastName: "Prawiranegara",
         email: "yuliusprawiranegara@sekolah.id",
-        idSubject: 4
+        idSubject: 2
       }
     ]);
   },

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include partials/title.ejs%>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+  </head>
+  <body>
+    <%- include partials/header.ejs%>
+    <content>
+      <form id="form" action="/teacher/insert" method="post">
+        <label>First Name</label>
+        <input type="text" name="firstName" required><br>
+        <label>Last Name</label>
+        <input type="text" name="lastName" required><br>
+        <label>Email</label>
+        <input type="email" name="email" required><br>
+        <label>Subject</label>
+        <select name="idSubject">
+          <% dataSubject.forEach((rowSubject) => { %>
+            <option value="<%=rowSubject.id%>"><%= rowSubject.subjectName%></option>
+          <%})%>
+        </select><br>
+        <input type="submit" value="Submit">
+      </form>
+    </content>
+    <%- include partials/footer.ejs%>
+  </body>
+</html>

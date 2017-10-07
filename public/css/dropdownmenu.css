@@ -1,0 +1,91 @@
+nav#menu {
+	width:98%;
+	padding: 1%;
+	text-align: center;
+	background:red;
+	margin-top: 7%;
+}
+
+nav#menu ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav#menu ul li {
+	font-size: 24px;
+	font-weight: bold;
+	font-family: titleFont;
+	display: inline-block;
+	position: relative;
+	padding: 1%;
+	border-radius: 10%;
+	background: yellow;
+	color: black;
+}
+
+nav#menu ul li:hover {
+	background-color: cyan;
+	transition: all 0.2s;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	box-shadow: 1px 1px 10px 0px rgba(1,1,1,0.5);
+	color: red;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+nav#menu ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+	-webkit-transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+	-o-transition: all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
+	top: 60px;
+}
+
+nav#menu ul li:active {
+	color:red;
+}
+
+nav#menu ul li: {
+	color:red;
+	background-color: cyan;
+}
+
+nav#menu ul li ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	z-index: 1;
+	top: 0px;
+	left:0px;
+	opacity: 0;
+	visibility: hidden;
+}
+
+nav#menu ul li ul li{
+	padding: 10px;
+	font-size: 18;
+	font-family: titleFont;
+	display: inline-block;
+	position: relative;
+	left: 0;
+	color: white;
+	border-radius: 0px;
+}
+
+nav#menu ul li ul li:hover {
+	background-color: yellow;
+	color: black;
+	-moz-transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}

@@ -1,0 +1,56 @@
+#form{
+  width:35%;
+  position: relative;
+  font-family: titleFont;
+  font-size: 24px;
+}
+
+#form label{
+	display:block;
+	width:50%;
+	padding: 2%;
+	background-color:yellow;
+  float: left;
+}
+
+#form input[type="text"], #form input[type="password"], #form input[type="email"], #form input[type="number"]{
+	display: block;
+	width:95.7%;
+	padding: 2%;
+	border:1px solid #DDD;
+	color:red;
+}
+
+#form select{
+  display: block;
+  width: 100%;
+  padding: 2%;
+  border:1px solid #DDD;
+	color: red;
+  background-color: white;
+}
+
+#form input[type="submit"]{
+	padding:10px 20px;
+	background-color: yellow;
+	cursor:pointer;
+  font-family: titleFont;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#form input[type="submit"]:hover{
+	background-color: cyan;
+  color: red;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	-ms-transition: all 1s;
+	border-radius:10px;
+	box-shadow:1px 1px 10px rgba(0,0,0,5);
+	-webkit-box-shadow:1px 1px 10px rgba(0,0,0,5);
+	-moz-box-shadow:1px 1px 10px rgba(0,0,0,5);
+	-o-box-shadow:1px 1px 10px rgba(0,0,0,5);
+	-ms-box-shadow:1px 1px 10px rgba(0,0,0,5);
+}

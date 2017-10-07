@@ -7,9 +7,13 @@
   <body>
     <%- include partials/header.ejs%>
     <content>
-      <form id="form" action="/subject/edit/<%= dataSubject.id%>" method="post">
-        <label>Subject Name</label>
-        <input type="text" name="subjectName" value="<%= dataSubject.subjectName%>" required><br>
+      <form id="form" action="/student/insert" method="post">
+        <label>First Name</label>
+        <input type="text" name="firstName" required><br>
+        <label>Last Name</label>
+        <input type="text" name="lastName" required><br>
+        <label>Email</label>
+        <input type="email" name="email" required><br>
         <input type="submit" value="Submit">
       </form>
     </content>

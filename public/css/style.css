@@ -1,0 +1,56 @@
+*{
+  margin: auto;
+  padding: auto;
+}
+
+html, body, content {
+  height: 100%;
+}
+
+@font-face {
+  font-family: titleFont;
+  src: url("../font/GoodDog-webfont.woff");
+}
+
+body{
+  width: 100%;
+  background: #eaeaea;
+}
+
+header{
+  width: 96%;
+  text-align: center;
+  padding:2%;
+  background-color: white;
+  border-bottom: 2px solid red;
+  position: fixed;
+  z-index: 50;
+}
+
+.title{
+  font-family: titleFont;
+  font-size: 30px;
+}
+
+content{
+  float: left;
+  width: 96%;
+  padding: 2% 2% 2% 2%;
+  background: transparant;
+}
+
+p.error{
+  font-family: titleFont;
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+}
+
+footer{
+  width: 96%;
+  text-align: center;
+  padding:2%;
+  background-color: white;
+  position: fixed;
+  bottom: 0px;
+}
