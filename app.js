@@ -26,10 +26,5 @@ app.use("/", student);
 app.use("/", subject);
 app.use("/", teacher);
 
-app.listen(2500, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("port 2500 aktif");
-  }
-})
+
+app.listen(process.env.PORT || '2500');
