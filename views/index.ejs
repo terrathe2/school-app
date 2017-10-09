@@ -2,9 +2,30 @@
 <html>
   <head>
     <%- include partials/title.ejs%>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
   </head>
   <body>
     <%- include partials/header.ejs%>
+    <%- include partials/menu.ejs%>
+    <content>
+      <% if (!username) {%>
+        <p class="error">
+          <% if(error) { %>
+            <%= error%>
+          <% } %>
+        </p><br>
+        
+      <form id="form" action="/login" method="post">
+        <label>Username</label>
+        <input type="text" name="username"><br>
+        <label>Password</label>
+        <input type="password" name="password"><br>
+        <input type="submit" value="Login"> <a href="/register" style="margin-left:5%;"> Register </a>
+      </form>
+      <% } else { %>
+        <h2 class="welcome">Welcome <br> <%= role %> <%= username %></h2>
+      <% } %>
+    </content>
     <%- include partials/footer.ejs%>
   </body>
 </html>

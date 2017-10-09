@@ -3,6 +3,15 @@ const router = express.Router();
 const models = require("../models");
 const helper = require("../Helper/helper")
 
+router.use(function (req, res, next) {
+  console.log('aa');
+  if (req.session.role === "academic" || req.session.role === "headmaster") {
+    next();
+  } else {
+    res.redirect("/");
+  }
+})
+
 // Tampil halaman Subject
 router.get("/subject", (req, res) => {
   models.Subject.findAll({include: [models.Teacher]}).then((rowsSubject) => {
@@ -11,7 +20,7 @@ router.get("/subject", (req, res) => {
       message = req.query.message;
     }
     // console.log(rowsSubject[0].Teachers[0].getFullName());
-    res.render("subject", {dataSubject: rowsSubject, error: message, title: "Subjects"});
+    res.render("subject", {dataSubject: rowsSubject, error: message, title: "Subjects", role: req.session.role, username: req.session.username});
   })
 })
 
@@ -26,7 +35,7 @@ router.get("/subject/enrolledstudents/:id", (req, res) => {
         row.grade = helper.grade(row.score);
       })
 
-      res.render("enrolledStudent", {dataStudentSubject: rowsStudentSubject, title: "Enrolled Students"});
+      res.render("enrolledStudent", {dataStudentSubject: rowsStudentSubject, title: "Enrolled Students", role: req.session.role, username: req.session.username});
     }
   })
 })
@@ -34,7 +43,7 @@ router.get("/subject/enrolledstudents/:id", (req, res) => {
 // Tampil halaman givescore
 router.get("/subject/givescore/:id", (req, res) => {
   models.StudentSubject.findOne({include: [models.Subject, models.Student], attributes: ["id", "idStudent", "idSubject", "score"], where: {id:req.params.id}}).then((rowsStudentSubject) => {
-    res.render("givescore", {dataStudentSubject: rowsStudentSubject, title: "Scoring"})
+    res.render("givescore", {dataStudentSubject: rowsStudentSubject, title: "Scoring", role: req.session.role, username: req.session.username})
   })
 })
 
@@ -47,7 +56,7 @@ router.post("/subject/givescore/:id", (req, res) => {
 
 // Tampil halaman tambah Subject
 router.get("/subject/insert", (req, res) => {
-  res.render("addSubject", {title: "Add Subject"});
+  res.render("addSubject", {title: "Add Subject", role: req.session.role, username: req.session.username});
 })
 
 // Tambah data Subject
@@ -60,7 +69,7 @@ router.post("/subject/insert", (req, res) => {
 // Tampil Halaman edit Subject
 router.get("/subject/edit/:id", (req, res) => {
   models.Subject.findById(req.params.id).then((rowSubject) => {
-    res.render("editsubject", {dataSubject: rowSubject, title: "Edit Subject's Data"})
+    res.render("editsubject", {dataSubject: rowSubject, title: "Edit Subject's Data", role: req.session.role, username: req.session.username})
   })
 })
 

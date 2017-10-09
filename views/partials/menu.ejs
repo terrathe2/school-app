@@ -1,0 +1,54 @@
+<nav id="menu">
+  <ul>
+      <a href="/"><li>Home</li></a>
+      <% if (role === "headmaster") { %>
+        <li>
+          Teachers
+          <ul>
+            <a href="/teacher"><li>Show Teachers</li></a>
+            <a href="/teacher/insert"><li>Add Teacher</li></a>
+          </ul>
+        </li>
+        <li>
+          Students
+          <ul>
+            <a href="/student"><li>Show Students</li></a>
+            <a href="/student/insert"><li>Add Student</li></a>
+          </ul>
+        </li>
+        <li>
+          Subjects
+          <ul>
+            <a href="/subject"><li>Show Subjects</li></a>
+            <a href="/subject/insert"><li>Add Subject</li></a>
+          </ul>
+        </li>
+        <a href="/logout"><li>Logout</li></a>
+      <% } else if (role === "academic") { %>
+        <li>
+          Students
+          <ul>
+            <a href="/student"><li>Show Students</li></a>
+            <a href="/student/insert"><li>Add Student</li></a>
+          </ul>
+        </li>
+        <li>
+          Subjects
+          <ul>
+            <a href="/subject"><li>Show Subjects</li></a>
+            <a href="/subject/insert"><li>Add Subject</li></a>
+          </ul>
+        </li>
+        <a href="/logout"><li>Logout</li></a>
+      <% } else if (role === "teacher") { %>
+        <li>
+          Students
+          <ul>
+            <a href="/student"><li>Show Students</li></a>
+            <a href="/student/insert"><li>Add Student</li></a>
+          </ul>
+        </li>
+        <a href="/logout"><li>Logout</li></a>
+      <% } %>
+  </ul>
+</nav>

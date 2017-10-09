@@ -46,6 +46,14 @@ p.error{
   text-align: center;
 }
 
+h2.welcome{
+  margin-top: 5%;
+  font-family: titleFont;
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+}
+
 footer{
   width: 96%;
   text-align: center;

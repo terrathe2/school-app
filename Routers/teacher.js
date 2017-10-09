@@ -2,6 +2,13 @@ const express = require("express");
 const router = express.Router();
 const models = require("../models");
 
+router.use(function (req, res, next) {
+  if (req.session.role === "headmaster") {
+    next();
+  } else {
+    res.redirect("/");
+  }
+})
 // Tampil Data Teacher + Subject
 router.get("/teacher", (req, res) => {
   models.Teacher.findAll({include:[models.Subject], order: [["firstName", "ASC"]]}).then((rowsTeacher) => {
@@ -25,7 +32,7 @@ router.get("/teacher", (req, res) => {
     //         rowsTeacher[index].subjectName = "Unassigned";
     //       }
     //     })
-        res.render("teacher", {dataTeacher: rowsTeacher, dataSubject: rowsSubject, error: message, title: "Teachers"});
+        res.render("teacher", {dataTeacher: rowsTeacher, dataSubject: rowsSubject, error: message, title: "Teachers", role: req.session.role, username: req.session.username});
     //   })
     })
   })
@@ -34,7 +41,7 @@ router.get("/teacher", (req, res) => {
 // Tampil halaman tambah Teacher
 router.get("/teacher/insert", (req, res) => {
   models.Subject.findAll().then((rowsSubject) => {
-    res.render("addTeacher", {dataSubject: rowsSubject, title: "Add Teacher"});
+    res.render("addTeacher", {dataSubject: rowsSubject, title: "Add Teacher", role: req.session.role, username: req.session.username});
   })
 })
 
@@ -51,7 +58,7 @@ router.post("/teacher/insert", (req, res) => {
 router.get("/teacher/edit/:id", (req, res) => {
   models.Teacher.findById(req.params.id).then((rowTeacher) => {
     models.Subject.findAll().then((rowsSubject) => {
-      res.render("editteacher", {dataTeacher: rowTeacher, dataSubject: rowsSubject, title: "Edit Teacher's Data"});
+      res.render("editteacher", {dataTeacher: rowTeacher, dataSubject: rowsSubject, title: "Edit Teacher's Data", role: req.session.role, username: req.session.username});
     })
   })
 })

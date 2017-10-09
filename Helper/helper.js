@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 module.exports = {
   getFullName: (firstName, lastName)=> {
     return firstName + " " + lastName;
@@ -9,9 +11,9 @@ module.exports = {
       grade = "A"
     } else if (score > 70) {
       grade = "B"
-    } else if (score > 65) {
+    } else if (score > 55) {
       grade = "C"
-    } else if (score > 50) {
+    } else if (score > 40) {
       grade = "D"
     } else if (score > 0) {
       grade = "E"
@@ -20,5 +22,21 @@ module.exports = {
     }
 
     return grade;
+  },
+
+  secretShuffle: function() {
+    let alphanumeric = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    let secret = "";
+
+    for (let i = 0; i < 8; i++) {
+      secret+= alphanumeric[Math.floor(Math.random()*62)];
+    }
+
+    return secret;
+  },
+
+  secretHash: function(secret, password) {
+    const hash = crypto.createHmac('md5', secret).update(password).digest('hex');
+    return hash;
   }
 };

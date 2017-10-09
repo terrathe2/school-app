@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include partials/title.ejs%>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+  </head>
+  <body>
+    <%- include partials/header.ejs%>
+    <%- include partials/menu.ejs%>
+    <content>
+      <p class="error">
+        <% if(error) { %>
+          <%= error%>
+        <% } %>
+      </p><br>
+      <form id="form" action="/register" method="post">
+        <label>Username</label>
+        <input type="text" name="username" required><br>
+        <label>Password</label>
+        <input type="password" name="password" required><br>
+        <label>Role</label>
+        <select name="role" required>
+          <option value="">Choose your role</option>
+          <option value="teacher">Teacher</option>
+          <option value="academic">Academic</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+      </form>
+    </content>
+    <%- include partials/footer.ejs%>
+  </body>
+</html>
